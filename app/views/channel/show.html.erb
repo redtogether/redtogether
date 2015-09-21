@@ -1,0 +1,13 @@
+<div class="pure-g">
+
+  <section class="posts pure-u-1 pure-u-sm-3-5">
+
+  <% @channel.posts.each_with_index do |post, i| %>
+      <%= render partial: "post/post", locals: { post: post, show_channel: false, i: i } %>
+  <% end %>
+
+  </section>
+
+  <%= render partial: "sidebar", locals: { channel: @channel } %>
+
+</div>

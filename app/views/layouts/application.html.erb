@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Redtogether</title>
+  <title>reachinginto.space</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<header>
+	<h1><a href="/">reaching<b class="red">into</b><b class="star">&bigstar;</b>space</a></h1>
+
+	<h2 class="subtitle">
+		<% if @channel %>
+		  <a href="">#<%= @channel.name %></a></h2>
+		<% elsif @subtitle %>
+		  <%= @subtitle %>
+		<% else %>
+		  yolo swag 💯 thousand
+		<% end %>
+	</h2>
+</header>
+
+<% if notice %><p class="notice"><%= notice %></p><% end %>
+<% if alert %><p class="alert"><%= alert %></p><% end %>
+
+<p>
+  <% if current_user %>
+  	Logged in as <%= current_user.email %>.
+  	<%= link_to "(logout)", destroy_user_session_path, method: :delete %>
+  <% else %>
+  	<%= link_to "(sign in)", new_user_session_path %>
+  <% end %>
+</p>
+
+<div id="content">
 <%= yield %>
+</div>
 
 </body>
 </html>

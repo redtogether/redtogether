@@ -1,0 +1,28 @@
+<article class="post">
+  <p><%= i+1 %></p>
+
+  <p>
+    <%= link_to post.title, post.body %>
+  </p>
+
+  <p class="details">
+    posted
+    <%= content_tag :time, time_ago_in_words(post.created_at),
+                      datetime: post.created_at.iso8601 %>
+    ago by
+    <%= link_to post.user.email, "#" %>
+
+    <% if show_channel %>
+      in
+      <%= link_to "#" + post.channel_name, channel_url(post.channel) %>
+    <% end %>
+  </p>
+
+  <p class="details">
+    <%= post.domain %>
+  </p>
+
+  <p class="details">
+    <%= link_to "#{rand(10)} comments", post_url(post) %>
+  </p>
+</article>

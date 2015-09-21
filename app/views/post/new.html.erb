@@ -1,0 +1,12 @@
+<h3>Posting to #<%= @post.channel_name %></h3>
+
+<%= form_for @post, html: { class: "pure-form pure-form-stacked" } do |f| %>
+  <fieldset>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+  </fieldset>
+  <%= f.submit "Submit", class: "pure-button pure-button-primary" %>
+<% end %>

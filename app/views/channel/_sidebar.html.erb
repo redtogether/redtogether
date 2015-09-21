@@ -1,0 +1,29 @@
+<section class="channel pure-u-1 pure-u-sm-2-5">
+  <h2>#<%= channel.name %></h2>
+  <p><em><%= channel.description %></em></p>
+
+  <p>
+    <%= link_to "Submit a post ≻", submit_post_path, class: "pure-button pure-button-primary" %>
+  </p>
+
+  <p>
+    <%= rand(100) %> subscribers
+    <a class="pure-button">+ subscribe</a>
+  </p>
+
+  <p>
+    Moderated by <%= random_username %>, <%= random_username %> and <%= random_username %>.
+  </p>
+
+  <h3>Network</h3>
+
+  <ul>
+    <li><a href="#">#BlackLivesMatter</a></li>
+    <li><a href="#">#Socialism</a></li>
+    <li><a href="#">#Communism</a></li>
+    <li><a href="#">#Anarchism</a></li>
+  </ul>
+
+  <p> <%= link_to "Moderation records", "#" %> </p>
+
+</section>
