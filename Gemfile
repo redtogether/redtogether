@@ -35,12 +35,12 @@ gem "puma"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem "faker"
-gem 'purecss-rails'
+gem "faker", "~> 1.5.0"
+gem "purecss-rails", "~> 0.6.0"
 
-gem "devise"
+gem "devise", "~> 3.5.2"
 
-gem "rails_12factor"
+gem "rails_12factor", "~> 0.0.3"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
