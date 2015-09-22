@@ -9,17 +9,15 @@ Rails.application.routes.draw do
   root "front_page#index"
 
   get "c/:name" => "channel#show", as: :channel
+  post "c/:name/subscribe" => "channel#subscribe", as: :channel_subscribe
+  post "c/:name/unsubscribe" => "channel#unsubscribe", as: :channel_unsubscribe
+  get "c/:name/submit" => "post#new", as: :submit_post
+  post "c/:name/submit" => "post#create", as: :posts
 
   get "p/:slug" => "post#show", as: :post
-
-  get "c/:name/submit" => "post#new", as: :submit_post
-
-  post "c/:name/submit" => "post#create", as: :posts
-  
   post "p/:slug/submit" => "comment#create", as: :submit_comment
 
   get "x/:slug" => "comment#show", as: :comment
-
   post "x/:slug/submit" => "comment#reply", as: :comment_reply
 
   # Example of regular route:
