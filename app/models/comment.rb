@@ -8,4 +8,6 @@ class Comment < ActiveRecord::Base
   before_create do |post|
     post.slug = RandomIdHelper.random_id
   end
+
+  scope :top_level, -> { where(parent_id: nil) }
 end

@@ -19,13 +19,8 @@
 
 <% end %>
 
-<% @post.comments.each do |comment| %>
+<% @post.top_level_comments.each do |comment| %>
 
-  <p>
-    <%= h comment.inspect %>
-    posted
-    <%= time_ago_in_words comment.created_at %>
-    ago.
-  </p>
+  <%= render partial: "comment/comment", locals: { comment: comment, recurse: true } %>
 
 <% end %>

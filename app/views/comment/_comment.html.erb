@@ -1,0 +1,23 @@
+<div style="padding: 0.25em; margin: 0.25em; border: 2px solid #aaa">
+  <p>
+    <%= comment.author.email %>
+    posted
+    <%= time_ago_in_words comment.created_at %>
+    ago.
+  </p>
+
+  <p>
+    <%= comment.body %>
+  </p>
+
+  <% if recurse && !comment.children.empty? %>
+
+    <% comment.children.each do |child| %>
+
+      <%= render partial: "comment/comment", locals: { comment: child, recurse: true } %>
+
+    <% end %>
+
+  <% end %>
+
+</div>

@@ -24,4 +24,8 @@ class Post < ActiveRecord::Base
       nil
     end
   end
+
+  def top_level_comments
+    comments.top_level
+  end
 end

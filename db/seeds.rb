@@ -41,5 +41,17 @@ p_cost = Post.create!(
   body: "http://www.realcostofprisons.org/papers-finance.html"
 )
 
-p Channel.all
-p Post.all
+##########################
+
+c_wow = Comment.create!(
+  post: p_obsolete,
+  author: u_test,
+  body: "Wow!"
+)
+
+c_resp_wow = Comment.create!(
+  post: p_obsolete,
+  author: u_test,
+  parent: c_wow,
+  body: "Response to \"Wow!\""
+)
