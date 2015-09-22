@@ -10,4 +10,8 @@ class Comment < ActiveRecord::Base
   end
 
   scope :top_level, -> { where(parent_id: nil) }
+
+  def to_param
+    slug
+  end
 end

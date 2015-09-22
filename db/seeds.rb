@@ -49,9 +49,29 @@ c_wow = Comment.create!(
   body: "Wow!"
 )
 
-c_resp_wow = Comment.create!(
+c_wow_resp = Comment.create!(
   post: p_obsolete,
   author: u_test,
   parent: c_wow,
   body: "Response to \"Wow!\""
+)
+
+c_wow_resp_resp = Comment.create!(
+  post: p_obsolete,
+  author: u_test,
+  parent: c_wow_resp,
+  body: "A response to \"A response to \"Wow\"\""
+)
+
+c_wow_resp = Comment.create!(
+  post: p_obsolete,
+  author: u_test,
+  parent: c_wow,
+  body: "Another response to \"Wow\""
+)
+
+c_tl2 = Comment.create!(
+  post: p_obsolete,
+  author: u_test,
+  body: "A second top-level comment"
 )

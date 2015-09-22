@@ -1,0 +1,22 @@
+<%= render partial: "post/post", locals: { post: @post, show_channel: true, i: nil } %>
+
+<%= render partial: "comment", locals: { comment: @comment, recurse: true } %>
+
+<% if current_user %>
+
+  <%= form_for(@reply,
+      url: comment_reply_path,
+      html: { class: "pure-form pure-form-stacked" }
+    ) do |f| %>
+
+    <%= f.label :body, "Post comment" %>
+    <%= f.text_area :body %>
+   
+    <%= f.submit "Submit" %>
+  <% end %>
+
+<% else %>
+
+  <p>Log in to post a reply.</p>
+
+<% end %>

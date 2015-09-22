@@ -20,7 +20,5 @@
 <% end %>
 
 <% @post.top_level_comments.each do |comment| %>
-
   <%= render partial: "comment/comment", locals: { comment: comment, recurse: true } %>
-
 <% end %>

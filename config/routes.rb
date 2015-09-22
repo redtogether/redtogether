@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   
   post "p/:slug/submit" => "comment#create", as: :submit_comment
 
+  get "x/:slug" => "comment#show", as: :comment
+
+  post "x/:slug/submit" => "comment#reply", as: :comment_reply
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
