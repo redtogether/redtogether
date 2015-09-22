@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   belongs_to :channel, foreign_key: :channel_name, primary_key: :name
   belongs_to :user
+  
+  has_many :comments
 
   before_create do |post|
     post.slug = RandomIdHelper.random_id

@@ -4,6 +4,7 @@ class PostController < ApplicationController
 
     @post = Post.find_by(slug: slug)
     @channel = @post.channel
+    @comment = Comment.new(post: @post)
   end
 
   def new

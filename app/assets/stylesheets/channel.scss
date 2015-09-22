@@ -1,16 +1,13 @@
 
-section.posts {
-	
-	.post {
-		p {
-			margin: 0;
-		}
-
-		p.details {
-			font-size: 80%;
-			color: #333;
-		}
-
-		margin: 1em 0;
+article.post {
+	p {
+		margin: 0;
 	}
+
+	p.details {
+		font-size: 80%;
+		color: #333;
+	}
+
+	margin: 1em 0;
 }

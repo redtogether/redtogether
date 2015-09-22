@@ -1,5 +1,7 @@
 <article class="post">
-  <p><%= i+1 %></p>
+  <% if i %>
+    <p><%= i+1 %></p>
+  <% end %>
 
   <p>
     <%= link_to post.title, post.body %>
@@ -23,6 +25,6 @@
   </p>
 
   <p class="details">
-    <%= link_to "#{rand(10)} comments", post_url(post) %>
+    <%= link_to "#{post.comments.count} comments", post %>
   </p>
 </article>

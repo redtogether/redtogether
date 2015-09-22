@@ -1,1 +1,31 @@
-<%= h @post.inspect %>
+<%= render partial: "post", locals: { post: @post, show_channel: true, i: nil } %>
+
+<% if current_user %>
+
+  <%= form_for(@comment,
+      url: submit_comment_path(@post),
+      html: { class: "pure-form pure-form-stacked" }
+    ) do |f| %>
+
+    <%= f.label :body, "Post comment" %>
+    <%= f.text_area :body %>
+   
+    <%= f.submit "Submit" %>
+  <% end %>
+
+<% else %>
+
+  <p>Log in to post a comment.</p>
+
+<% end %>
+
+<% @post.comments.each do |comment| %>
+
+  <p>
+    <%= h comment.inspect %>
+    posted
+    <%= time_ago_in_words comment.created_at %>
+    ago.
+  </p>
+
+<% end %>

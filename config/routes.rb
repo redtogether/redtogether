@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comment/create'
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -13,6 +15,8 @@ Rails.application.routes.draw do
   get "c/:name/submit" => "post#new", as: :submit_post
 
   post "c/:name/submit" => "post#create", as: :posts
+  
+  post "p/:slug/submit" => "comment#create", as: :submit_comment
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
