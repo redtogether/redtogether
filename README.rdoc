@@ -1,5 +1,9 @@
 == README
 
+This project is distributed under the GNU GPLv3 or later versions.
+
+Please see [code_of_conduct.md](code_of_conduct.md) for the Code of Conduct.
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -26,3 +30,4 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
