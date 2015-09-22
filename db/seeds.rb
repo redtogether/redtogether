@@ -1,4 +1,4 @@
-u_test = User.create!(email: "test@yolo.example", password: "yoloswag")
+u_test = User.create!(email: "test@red.together", password: "redtogether")
 
 c_decarceration = Channel.create!(
   name: "Decarceration",
