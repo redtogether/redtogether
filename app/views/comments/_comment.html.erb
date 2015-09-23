@@ -10,9 +10,9 @@
     <%= link_to "Permalink", [comment.post, comment] %>
   </p>
 
-  <p>
-    <%= comment.body %>
-  </p>
+  <div>
+    <%= markdown comment.body %>
+  </div>
 
   <% if recurse && !comment.children.empty? %>
     <% comment.children.each do |child| %>

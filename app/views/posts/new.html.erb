@@ -1,6 +1,6 @@
 <h3>Posting to #<%= @post.channel_name %></h3>
 
-<%= form_for @post, html: { class: "pure-form pure-form-stacked" } do |f| %>
+<%= form_for [@channel, @post], html: { class: "pure-form pure-form-stacked" } do |f| %>
   <fieldset>
     <%= f.label :title %>
     <%= f.text_field :title %>

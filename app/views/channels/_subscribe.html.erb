@@ -1,0 +1,13 @@
+<% if current_user.subscribed?(channel) %>
+
+  <%= form_tag channel_unsubscribe_path(channel) do %>
+    <%= submit_tag "- unsubscribe", class: "pure-button" %>
+  <% end %>
+
+<% else %>
+
+  <%= form_tag channel_subscribe_path(channel) do %>
+    <%= submit_tag "+ subscribe", class: "pure-button" %>
+  <% end %>
+
+<% end %>

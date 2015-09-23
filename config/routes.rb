@@ -7,11 +7,13 @@ Rails.application.routes.draw do
     post "subscribe" => "channels#subscribe"
     post "unsubscribe" => "channels#unsubscribe"
 
-    resources :posts, path: "p", only: [:new, :create]
+    resources :posts, path: "",
+      only: [:new, :create],
+      path_names: { new: "submit" }
   end
 
   resources :posts, path: "p" do
-    resources :comments, path: "c" do
+    resources :comments, path: "x" do
       post "reply" => "comments#reply"
     end
   end

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>redtogether</title>
+  <title>sample.text</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,15 +9,15 @@
 <body>
 
 <header>
-	<h1><a href="/"><span class="red">red</span><b class="star">&bigstar;</b><b>together</b></a></h1>
+	<h1><a href="/"><span class="red">sample</span><b class="star">&bigstar;</b><b>text</b></a></h1>
 
 	<h2 class="subtitle">
 		<% if @channel %>
-		  <a href="">#<%= @channel.name %></a></h2>
+		  <%= link_to "##{@channel.name}", @channel %>
 		<% elsif @subtitle %>
 		  <%= @subtitle %>
 		<% else %>
-          power to the people
+        sample text
 		<% end %>
 	</h2>
 </header>
