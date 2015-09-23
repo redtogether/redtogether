@@ -3,7 +3,7 @@
 <% if current_user %>
 
   <%= form_for(@comment,
-      url: submit_comment_path(@post),
+      url: post_comments_path(@post),
       html: { class: "pure-form pure-form-stacked" }
     ) do |f| %>
 
@@ -20,5 +20,5 @@
 <% end %>
 
 <% @post.top_level_comments.each do |comment| %>
-  <%= render partial: "comment/comment", locals: { comment: comment, recurse: true } %>
+  <%= render partial: "comments/comment", locals: { comment: comment, recurse: true } %>
 <% end %>

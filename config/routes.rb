@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :channels, path: "c" do
     post "subscribe" => "channels#subscribe"
     post "unsubscribe" => "channels#unsubscribe"
+
+    resources :posts, path: "p", only: [:new, :create]
   end
 
   resources :posts, path: "p" do
