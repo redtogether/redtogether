@@ -4,13 +4,13 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :channels, path: "c" do
-    post "subscribe" => "channel#subscribe"
-    post "unsubscribe" => "channel#unsubscribe"
+    post "subscribe" => "channels#subscribe"
+    post "unsubscribe" => "channels#unsubscribe"
   end
 
   resources :posts, path: "p" do
     resources :comments, path: "c" do
-      post "reply" => "comment#reply"
+      post "reply" => "comments#reply"
     end
   end
 

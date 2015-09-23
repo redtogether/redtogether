@@ -1,4 +1,4 @@
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
   def create
     if !current_user
       flash[:alert] = "Must be logged in to post a comment"

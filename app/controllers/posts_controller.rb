@@ -1,4 +1,4 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
   def show
     slug = params[:slug].split("_", 2).first
 

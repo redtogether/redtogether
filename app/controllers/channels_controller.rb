@@ -1,4 +1,4 @@
-class ChannelController < ApplicationController
+class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find_by_name(params[:name])
