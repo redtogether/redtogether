@@ -3,7 +3,8 @@
   <p><em><%= channel.description %></em></p>
 
   <p>
-    <%= link_to "Submit a post ≻", submit_post_path, class: "pure-button pure-button-primary" %>
+    <%= link_to "Submit a post ≻", new_channel_post_path(channel),
+          class: "pure-button pure-button-primary" %>
   </p>
 
   <p>

@@ -1,13 +1,13 @@
 class ChannelsController < ApplicationController
 
   def show
-    @channel = Channel.find_by_name(params[:name])
+    @channel = Channel.find_by_name(params[:id])
 
     render status: 404 unless @channel
   end
 
   def subscribe
-    @channel = Channel.find_by_name(params[:name])
+    @channel = Channel.find_by_name(params[:channel_id])
 
     if current_user.subscribe(@channel)
       flash[:notice] = "Subscribed to #{@channel.name}"
@@ -19,7 +19,7 @@ class ChannelsController < ApplicationController
   end
 
   def unsubscribe
-    @channel = Channel.find_by_name(params[:name])
+    @channel = Channel.find_by_name(params[:channel_id])
 
     if current_user.unsubscribe(@channel)
       flash[:notice] = "Unubscribed from #{@channel.name}"

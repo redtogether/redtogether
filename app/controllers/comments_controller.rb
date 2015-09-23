@@ -20,14 +20,21 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find_by(slug: params[:slug])
-    @post = @comment.post
+    @comment = Comment.find_by(slug: params[:id])
+    @post = Post.find_by(slug: params[:post_id])
+
+    render status: 401, body: "Comment and post mismatch" \
+      unless @comment.post == @post
+
     @reply = Comment.new
   end
 
   def reply
-    @parent = Comment.find_by(slug: params[:slug])
-    @post = @parent.post
+    @parent = Comment.find_by(slug: params[:comment_id])
+    @post = Post.find_by(slug: params[:post_id])
+
+    render status: 401, body: "Comment and post mismatch" \
+      unless @parent.post == @post
 
     @reply = Comment.new(comment_params)
     @reply.post = @post
@@ -40,7 +47,7 @@ class CommentsController < ApplicationController
       flash[:alert] = "Failed to post reply"
     end
     
-    redirect_to @parent
+    redirect_to [@post, @parent]
   end
 
   private

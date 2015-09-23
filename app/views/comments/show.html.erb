@@ -1,11 +1,11 @@
-<%= render partial: "post/post", locals: { post: @post, show_channel: true } %>
+<%= render partial: "posts/post", locals: { post: @post, show_channel: true } %>
 
 <%= render partial: "comment", locals: { comment: @comment, recurse: true } %>
 
 <% if current_user %>
 
   <%= form_for(@reply,
-      url: comment_reply_path,
+      url: post_comment_reply_path(@post, @comment),
       html: { class: "pure-form pure-form-stacked" }
     ) do |f| %>
 

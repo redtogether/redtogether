@@ -2,8 +2,8 @@
 
   <section class="posts pure-u-1 pure-u-sm-3-5">
 
-  <% @channel.posts.each_with_index do |post, i| %>
-      <%= render partial: "post/post", locals: { post: post, show_channel: false, i: i } %>
+  <% @channel.posts.each_with_index do |post| %>
+      <%= render partial: "posts/post", locals: { post: post, show_channel: false } %>
   <% end %>
 
   </section>

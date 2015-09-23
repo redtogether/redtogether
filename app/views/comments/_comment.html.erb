@@ -7,7 +7,7 @@
   </p>
 
   <p>
-    <%= link_to "Permalink", comment %>
+    <%= link_to "Permalink", [comment.post, comment] %>
   </p>
 
   <p>
@@ -16,7 +16,7 @@
 
   <% if recurse && !comment.children.empty? %>
     <% comment.children.each do |child| %>
-      <%= render partial: "comment/comment", locals: { comment: child, recurse: true } %>
+      <%= render partial: "comments/comment", locals: { comment: child, recurse: true } %>
     <% end %>
   <% end %>
 

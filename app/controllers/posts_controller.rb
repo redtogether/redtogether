@@ -1,14 +1,12 @@
 class PostsController < ApplicationController
   def show
-    slug = params[:slug].split("_", 2).first
-
-    @post = Post.find_by(slug: slug)
+    @post = Post.find_by(slug: params[:id])
     @channel = @post.channel
     @comment = Comment.new(post: @post)
   end
 
   def new
-    @channel = Channel.find_by_name(params[:name])
+    @channel = Channel.find_by_name(params[:id])
 
     redirect_to channel_path(@channel), \
       flash: { alert: "Must be signed in to submit a post." } \
