@@ -9,16 +9,16 @@ class Post < ActiveRecord::Base
   end
 
   def to_param
-    [slug, normalized_title].join("_")
+    [slug, normalized_title].join("-")
   end
 
   def normalized_title
-    title.gsub(/[^0-9A-Za-z]+/, "_").downcase[0...64]
+    title.downcase.gsub(/\W+/, "-").sub(/-\Z/, "")[0...64]
   end
 
   def self.find_by_param(param)
     return nil unless param
-    slug = param.split("_", 2).first
+    slug = param.split("-", 2).first
     find_by(slug: slug)
   end
 

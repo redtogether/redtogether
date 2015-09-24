@@ -12,7 +12,7 @@
 
     <% if show_channel %>
       in
-      <%= link_to "#" + post.channel_name, channel_url(post.channel) %>
+      <%= channel_link(post.channel) %>
     <% end %>
   </p>
 

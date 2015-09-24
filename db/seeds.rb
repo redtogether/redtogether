@@ -1,10 +1,26 @@
 u_test = User.create!(email: "test@red.together", password: "redtogether")
+u_test.confirm!
+
+###########################################
 
 c_decarceration = Channel.create!(
   name: "Decarceration",
-  title: "/c/Decarceration",
+  title: "+Decarceration",
   description: "Build the People, Not the Prisons!"
 )
+
+c_test = Channel.create!(
+  name: "TestMachine",
+  title: "+TestMachine: please ignore",
+  description: "For test purposes only!"
+)
+
+##########################################
+
+u_test.subscribe(c_decarceration)
+u_test.subscribe(c_test)
+
+##########################################
 
 p_obsolete = Post.create!(
   channel: c_decarceration,
@@ -39,6 +55,13 @@ p_cost = Post.create!(
   user: u_test,
   title: "The Real Cost of Building and Financing Prisons and Jails",
   body: "http://www.realcostofprisons.org/papers-finance.html"
+)
+
+p_test = Post.create!(
+  channel: c_test,
+  user: u_test,
+  title: "Yet Another Test Post!",
+  body: "https://www.loc.gov/"
 )
 
 ##########################

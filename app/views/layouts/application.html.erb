@@ -13,7 +13,7 @@
 
 	<h2 class="subtitle">
 		<% if @channel %>
-		  <%= link_to "##{@channel.name}", @channel %>
+		  <%= channel_link @channel %>
 		<% elsif @subtitle %>
 		  <%= @subtitle %>
 		<% else %>

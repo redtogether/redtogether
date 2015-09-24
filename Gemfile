@@ -40,8 +40,6 @@ gem "purecss-rails", "~> 0.6.0"
 
 gem "devise", "~> 3.5.2"
 
-gem "rails_12factor", "~> 0.0.3"
-
 gem "kramdown"
 
 group :development, :test do
@@ -59,3 +57,6 @@ group :development do
   gem "pry-rails"
 end
 
+group :production do
+  gem "rails_12factor", "~> 0.0.3"
+end

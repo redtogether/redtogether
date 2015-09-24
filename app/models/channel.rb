@@ -5,11 +5,14 @@ class Channel < ActiveRecord::Base
   validates :name, uniqueness: { case_sensitive: false }
 
   def to_param
-    name
+    "+#{name}"
   end
 
-  def self.find_by_name(name)
-    return nil unless name.respond_to?(:downcase)
+  def self.find_by_name(param)
+    return nil if param.blank?
+
+    name = param.split("+", 2)[1]
+
     where("lower(name) = ?", name.downcase).first
   end
 

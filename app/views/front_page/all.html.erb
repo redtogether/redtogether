@@ -6,14 +6,7 @@
 </section>
 
 <section class="channel pure-u-1 pure-u-sm-2-5">
-  <h2>Front page</h2>
-
-  <h3>See also</h3>
-  <ul>
-    <li><%= link_to "+all", channel_path(id: "+all") %></li>
-  <% @channels.each do |channel| %>
-    <li><%= channel_link channel %></li>
-  <% end %>
-  </ul>
+  <h2>+all</h2>
+  <p><em>It's everything</em></p>
 </section>
 </div>

@@ -11,7 +11,7 @@
   </p>
 
   <div>
-    <%= markdown comment.body %>
+    <%= sanitize markdown comment.body %>
   </div>
 
   <% if recurse && !comment.children.empty? %>
