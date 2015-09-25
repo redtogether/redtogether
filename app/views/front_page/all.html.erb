@@ -1,0 +1,12 @@
+<div class="pure-g">
+<section class="posts pure-u-1 pure-u-sm-3-5">
+  <% @posts.each do |post| %>
+    <%= render partial: "posts/post", locals: { post: post, show_channel: true } %>
+  <% end %>
+</section>
+
+<section class="channel pure-u-1 pure-u-sm-2-5">
+  <h2>+all</h2>
+  <p><em>It's everything</em></p>
+</section>
+</div>
