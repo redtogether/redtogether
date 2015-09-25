@@ -8,7 +8,7 @@
     <%= content_tag :time, time_ago_in_words(post.created_at),
                       datetime: post.created_at.iso8601 %>
     ago by
-    <%= link_to post.user.email, "#" %>
+    <%= user_link post.user %>
 
     <% if show_channel %>
       in

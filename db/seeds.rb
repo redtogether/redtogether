@@ -1,4 +1,8 @@
-u_test = User.create!(email: "test@red.together", password: "redtogether")
+u_test = User.create!(
+  email: "test@red.together",
+  password: "redtogether",
+  handle: "test_user"
+)
 u_test.confirm!
 
 ###########################################
