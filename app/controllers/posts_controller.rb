@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     @post.channel = @channel
-    @post.user = current_user
+    @post.poster = current_user
 
     @post.save!
 

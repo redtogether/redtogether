@@ -20,6 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users, path: "", id: /@\w+/, only: [:show]
 
 end
