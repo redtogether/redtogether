@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :channel, foreign_key: :channel_name, primary_key: :name
-  belongs_to :user
+  belongs_to :poster, class_name: :User, foreign_key: :user_id
   
   has_many :comments
 
