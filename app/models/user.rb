@@ -9,6 +9,18 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :channel_subscriptions
 
+  def to_param
+    "@#{handle}"
+  end
+
+  def self.find_by_param(param)
+    return nil if param.blank?
+
+    handle = param.split("@", 2)[1]
+
+    find_by(handle: handle) if handle
+  end
+
   def subscribe(channel)
     if subscribed?(channel)
       nil

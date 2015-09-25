@@ -1,9 +1,10 @@
-u_test = User.create!(
+u_test = User.new(
   email: "test@red.together",
   password: "redtogether",
   handle: "test_user"
 )
-u_test.confirm!
+u_test.skip_confirmation!
+u_test.save!
 
 ###########################################
 
