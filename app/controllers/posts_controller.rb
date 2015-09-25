@@ -13,7 +13,7 @@ class PostsController < ApplicationController
       flash: { alert: "Must be signed in to submit a post." } \
       unless current_user
 
-    @post = Post.new(channel: @channel, user: current_user)
+    @post = Post.new(channel: @channel, poster: current_user)
   end
 
   def create

@@ -14,4 +14,8 @@ class Comment < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def self.find_by_param(param)
+    find_by(slug: param)
+  end
 end

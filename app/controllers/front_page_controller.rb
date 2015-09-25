@@ -7,7 +7,7 @@ class FrontPageController < ApplicationController
     end
 
     @posts = @posts
-      .includes(:channel, :user)
+      .includes(:channel, :poster)
       .order(created_at: :desc)
       .take(15)
 
@@ -18,7 +18,7 @@ class FrontPageController < ApplicationController
 
   def all
     @posts = Post.all
-      .includes(:channel, :user)
+      .includes(:channel, :poster)
       .order(created_at: :desc)
       .take(15)
   end
