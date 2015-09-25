@@ -12,15 +12,15 @@
 
     <% if show_channel %>
       in
-      <%= link_to "#" + post.channel_name, channel_url(post.channel) %>
+      <%= channel_link(post.channel) %>
     <% end %>
   </p>
 
   <p class="details">
-    <%= post.domain %>
+    <%= h post.domain %>
   </p>
 
   <p class="details">
-    <%= link_to "#{post.comments.count} comments", post %>
+    <%= link_to "#{post.comments_count} comments", post %>
   </p>
 </article>

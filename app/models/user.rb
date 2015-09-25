@@ -27,9 +27,30 @@ class User < ActiveRecord::Base
   end
 
   def subscribed?(channel)
-    channel_subscriptions
-      .pluck(:channel_name)
-      .map(&:downcase)
-      .include?(channel.name.downcase)
+    subscription_names.include?(channel.name.downcase)
+  end
+
+  def subscription_names
+    channel_subscriptions.pluck(:channel_name).map(&:downcase)
+  end
+
+  def subscriptions
+    channels = Channel.arel_table
+
+    Channel.where(channels[:name].lower.in(arel_subscription_names))
+  end
+
+  def subscribed_posts
+    posts = Post.arel_table
+
+    Post.where(posts[:channel_name].lower.in(arel_subscription_names))
+  end
+
+  private
+
+  def arel_subscription_names
+    cs = ChannelSubscription.arel_table
+
+    cs.project(cs[:channel_name].lower).where(cs[:user_id].eq(id))
   end
 end

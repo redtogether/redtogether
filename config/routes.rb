@@ -3,17 +3,23 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :channels, path: "c" do
+  get "+all" => "front_page#all"
+
+  resources :channels, path: "", id: /\+\w+/ do
     post "subscribe" => "channels#subscribe"
     post "unsubscribe" => "channels#unsubscribe"
 
-    resources :posts, path: "p", only: [:new, :create]
+    resources :posts, path: "",
+      only: [:new, :create],
+      path_names: { new: "submit" }
   end
 
-  resources :posts, path: "p" do
-    resources :comments, path: "c" do
+  resources :posts do
+    resources :comments do
       post "reply" => "comments#reply"
     end
   end
+
+  resources :users
 
 end

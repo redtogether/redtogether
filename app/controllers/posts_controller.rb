@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
   def show
-    @post = Post.find_by(slug: params[:id])
+    @post = Post.find_by_param(params[:id])
     @channel = @post.channel
-    @comment = Comment.new(post: @post)
+    @reply = Comment.new(post: @post)
+    @comments = @post.top_level_comments.order(created_at: :desc)
   end
 
   def new
-    @channel = Channel.find_by_name(params[:id])
+    @channel = Channel.find_by_name(params[:channel_id])
 
     redirect_to channel_path(@channel), \
       flash: { alert: "Must be signed in to submit a post." } \
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @channel = Channel.find_by_name(params[:name])
+    @channel = Channel.find_by_name(params[:channel_id])
     @post = Post.new(post_params)
 
     @post.channel = @channel

@@ -1,7 +1,19 @@
 <div class="pure-g">
-<section class="posts pure-u-1">
-  <% @posts.each_with_index do |post, i| %>
+<section class="posts pure-u-1 pure-u-sm-3-5">
+  <% @posts.each do |post| %>
     <%= render partial: "posts/post", locals: { post: post, show_channel: true } %>
   <% end %>
+</section>
+
+<section class="channel pure-u-1 pure-u-sm-2-5">
+  <h2>Front page</h2>
+
+  <h3>See also</h3>
+  <ul>
+    <li><%= link_to "+all", channel_path(id: "+all") %></li>
+  <% @channels.each do |channel| %>
+    <li><%= channel_link channel %></li>
+  <% end %>
+  </ul>
 </section>
 </div>

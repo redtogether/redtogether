@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
       redirect_to @post
     end
     
-    @post = Post.find_by(slug: params[:slug])
+    @post = Post.find_by_param(params[:post_id])
     @comment = Comment.new(comment_params)
     @comment.post = @post
     @comment.author = current_user
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find_by(slug: params[:id])
-    @post = Post.find_by(slug: params[:post_id])
+    @post = Post.find_by_param(params[:post_id])
 
     render status: 401, body: "Comment and post mismatch" \
       unless @comment.post == @post
@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
 
   def reply
     @parent = Comment.find_by(slug: params[:comment_id])
-    @post = Post.find_by(slug: params[:post_id])
+    @post = Post.find_by_param(params[:post_id])
 
     render status: 401, body: "Comment and post mismatch" \
       unless @parent.post == @post
