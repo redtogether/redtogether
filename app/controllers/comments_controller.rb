@@ -56,6 +56,13 @@ class CommentsController < ApplicationController
       })
   end
 
+  def index
+    @post = Post.find_by_param(params[:post_id])
+
+    redirect_to \
+      channel_post_path channel_id: "+#{@post.channel_name}", id: @post.to_param
+  end
+
   private
   
   def comment_params
