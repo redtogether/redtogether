@@ -5,7 +5,7 @@
 <% if current_user %>
 
   <%= form_for(@reply,
-      url: post_comment_reply_path(@post, @comment),
+      url: comment_reply_path(@comment),
       html: { class: "pure-form pure-form-stacked" }
     ) do |f| %>
 
