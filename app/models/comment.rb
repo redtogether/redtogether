@@ -5,6 +5,13 @@ class Comment < ActiveRecord::Base
   has_many :children, class_name: :Comment, foreign_key: :parent_id
   belongs_to :parent, class_name: :Comment
 
+  has_many :upvotes, as: :voteable
+  has_many :downvotes, as: :voteable
+
+  def compute_score
+    upvotes_count - downvotes_count
+  end
+
   before_create do |post|
     post.slug = RandomIdHelper.random_id
   end

@@ -1,5 +1,14 @@
 <article class="post">
   <p>
+   <%= button_to raw("&uparrow;"), post_upvote_path(post), method: :put %>
+   <%= button_to raw("&downarrow;"), post_downvote_path(post), method: :put %>
+  </p>
+
+  <p>
+    <%= post.score %>
+  </p>
+
+  <p>
     <%= link_to post.title, post.body %>
   </p>
 

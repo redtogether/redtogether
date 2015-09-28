@@ -28,6 +28,32 @@ class PostsController < ApplicationController
     redirect_to channel_path(@channel), flash: { notice: "Post created" }
   end
 
+  def upvote
+    @post = Post.find_by_param(params[:post_id])
+
+    if current_user
+      Upvote.create(user: current_user, voteable: @post)
+    else
+      flash[:alert] = "Must be signed in to vote"
+    end
+
+    redirect_to :back
+  end
+
+  def downvote
+    @post = Post.find_by_param(params[:post_id])
+
+    if current_user
+      Downvote.create(user: current_user, voteable: @post)
+    else
+      flash[:alert] = "Must be signed in to vote"
+    end
+
+    redirect_to :back
+  end
+
+protected
+
   def post_params
     params.require(:post).permit(:title, :body)
   end

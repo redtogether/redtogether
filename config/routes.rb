@@ -18,8 +18,14 @@ Rails.application.routes.draw do
       except: [:index],
       path_names: { new: "submit" } do
 
+      put "upvote" => "posts#upvote"
+      put "downvote" => "posts#downvote"
+
       resources :comments do
         post "reply" => "comments#reply"
+
+        put "upvote" => "comments#upvote"
+        put "downvote" => "comments#downvote"
       end
     end
   end
