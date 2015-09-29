@@ -20,12 +20,14 @@ Rails.application.routes.draw do
 
       put "upvote" => "posts#upvote"
       put "downvote" => "posts#downvote"
+      delete "unvote" => "posts#unvote"
 
       resources :comments do
         post "reply" => "comments#reply"
 
         put "upvote" => "comments#upvote"
         put "downvote" => "comments#downvote"
+        delete "unvote" => "comments#unvote"
       end
     end
   end

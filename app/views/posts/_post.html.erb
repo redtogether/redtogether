@@ -1,7 +1,7 @@
 <article class="post">
   <p>
-   <%= button_to raw("&uparrow;"), post_upvote_path(post), method: :put %>
-   <%= button_to raw("&downarrow;"), post_downvote_path(post), method: :put %>
+   <%= post.upvoted ? post_unvote_button(post) : post_upvote_button(post) %>
+   <%= post.downvoted ? post_unvote_button(post) : post_downvote_button(post) %>
   </p>
 
   <p>

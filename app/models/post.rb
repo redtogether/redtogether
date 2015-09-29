@@ -7,12 +7,14 @@ class Post < ActiveRecord::Base
   has_many :upvotes, as: :voteable
   has_many :downvotes, as: :voteable
 
-  def compute_score
-    upvotes_count - downvotes_count
-  end
+  attr_accessor :upvoted, :downvoted
 
   before_create do |post|
     post.slug = RandomIdHelper.random_id
+  end
+
+  def score
+    upvotes_count - downvotes_count
   end
 
   def to_param

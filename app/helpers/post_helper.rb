@@ -1,4 +1,16 @@
 module PostHelper
+  def post_upvote_button(post)
+    button_to raw("&uparrow;"), post_upvote_path(post), method: :put
+  end
+
+  def post_downvote_button(post)
+    button_to raw("&downarrow;"), post_downvote_path(post), method: :put
+  end
+
+  def post_unvote_button(post)
+    button_to raw("&cir;"), post_unvote_path(post), method: :delete
+  end
+
   def post_path(post)
     channel_post_path \
       channel_id: post_channel_id(post),
@@ -19,6 +31,12 @@ module PostHelper
 
   def post_downvote_path(post)
     channel_post_downvote_path \
+      channel_id: post_channel_id(post),
+      post_id: post
+  end
+
+  def post_unvote_path(post)
+    channel_post_unvote_path \
       channel_id: post_channel_id(post),
       post_id: post
   end

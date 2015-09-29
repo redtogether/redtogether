@@ -21,6 +21,39 @@ class User < ActiveRecord::Base
     find_by(handle: handle) if handle
   end
 
+  def upvote(voteable)
+    existing_upvotes = Upvote.where(user: self, voteable: voteable)
+    existing_downvotes = Downvote.where(user: self, voteable: voteable)
+
+    existing_downvotes.destroy_all
+
+    case existing_upvotes.count
+    when 0 then Upvote.create(user: self, voteable: voteable)
+    when 1 then true
+    else
+      existing_upvotes.take(existing_upvotes.count - 1).destroy_all
+    end
+  end
+
+  def downvote(voteable)
+    existing_upvotes = Upvote.where(user: self, voteable: voteable)
+    existing_downvotes = Downvote.where(user: self, voteable: voteable)
+
+    existing_upvotes.destroy_all
+
+    case existing_downvotes.count
+    when 0 then Downvote.create(user: self, voteable: voteable)
+    when 1 then true
+    else
+      existing_downvotes.take(existing_downvotes.count - 1).destroy_all
+    end
+  end
+
+  def unvote(voteable)
+    Upvote.where(user: self, voteable: voteable).destroy_all && \
+    Downvote.where(user: self, voteable: voteable).destroy_all
+  end
+
   def subscribe(channel)
     if subscribed?(channel)
       nil

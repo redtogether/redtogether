@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20150928163715) do
     t.string   "slug"
     t.integer  "upvotes_count",   default: 0
     t.integer  "downvotes_count", default: 0
-    t.integer  "score",           default: 0
   end
 
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
@@ -73,7 +72,6 @@ ActiveRecord::Schema.define(version: 20150928163715) do
     t.integer  "comments_count",  default: 0
     t.integer  "upvotes_count",   default: 0
     t.integer  "downvotes_count", default: 0
-    t.integer  "score",           default: 0
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree

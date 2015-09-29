@@ -103,3 +103,7 @@ c_tl2 = Comment.create!(
   author: u_test,
   body: "A second top-level comment"
 )
+
+#############################
+
+Post.all.each { |p| u_test.upvote(p) }

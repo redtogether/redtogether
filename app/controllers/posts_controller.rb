@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     @post = Post.find_by_param(params[:post_id])
 
     if current_user
-      Upvote.create(user: current_user, voteable: @post)
+      current_user.upvote(@post)
     else
       flash[:alert] = "Must be signed in to vote"
     end
@@ -44,7 +44,19 @@ class PostsController < ApplicationController
     @post = Post.find_by_param(params[:post_id])
 
     if current_user
-      Downvote.create(user: current_user, voteable: @post)
+      current_user.downvote(@post)
+    else
+      flash[:alert] = "Must be signed in to vote"
+    end
+
+    redirect_to :back
+  end
+
+  def unvote
+    @post = Post.find_by_param(params[:post_id])
+
+    if current_user
+      current_user.unvote(@post)
     else
       flash[:alert] = "Must be signed in to vote"
     end

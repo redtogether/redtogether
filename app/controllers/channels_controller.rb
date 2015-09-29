@@ -2,6 +2,11 @@ class ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find_by_name(params[:id])
+    
+    @posts = @channel.posts
+      .includes(:channel, :poster)
+      .order(created_at: :desc)
+      .take(15)
 
     render status: 404 unless @channel
   end
