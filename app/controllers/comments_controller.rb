@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include VoteableHelper
+  
   def create
     @post = Post.find_by_param(params[:post_id])
 
@@ -28,6 +30,9 @@ class CommentsController < ApplicationController
       unless @comment.post == @post
 
     @reply = Comment.new
+
+    get_upvoted_downvoted(current_user, @post)
+    get_upvoted_downvoted(current_user, @comment)
   end
 
   def reply

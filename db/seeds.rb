@@ -106,4 +106,4 @@ c_tl2 = Comment.create!(
 
 #############################
 
-Post.all.each { |p| u_test.upvote(p) }
+u_test.posts.each { |p| u_test.upvote(p) }

@@ -1,5 +1,7 @@
 module VoteableHelper
   def get_upvoted_downvoted(user, voteables)
+    return nil unless user
+
     # The order of these queries is not important
     #db_query_threads = [Thread.new {
 
@@ -18,7 +20,7 @@ module VoteableHelper
     #}]
     #ThreadsWait.all_waits(*db_query_threads)
 
-    voteables.each do |voteable|
+    Array(voteables).each do |voteable|
       voteable.upvoted = @up_groups[voteable.id]
       voteable.downvoted = @down_groups[voteable.id]
     end

@@ -8,6 +8,8 @@ class Comment < ActiveRecord::Base
   has_many :upvotes, as: :voteable
   has_many :downvotes, as: :voteable
 
+  attr_accessor :upvoted, :downvoted
+
   def compute_score
     upvotes_count - downvotes_count
   end

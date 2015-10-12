@@ -1,6 +1,9 @@
 class Channel < ActiveRecord::Base
   has_many :posts, foreign_key: :channel_name, primary_key: :name
   has_many :channel_subscriptions, foreign_key: :channel_name, primary_key: :name
+  has_many :users, through: :channel_subscriptions
+
+  alias_method :subscribers, :users
 
   RESERVED_NAMES = %w( all random )
 
@@ -35,9 +38,5 @@ class Channel < ActiveRecord::Base
       channels = Channel.arel_table
       where(channels[:name].lower.eq(name.downcase)).first
     end
-  end
-
-  def subscribers
-    channel_subscriptions.includes(:user).map(&:user)
   end
 end

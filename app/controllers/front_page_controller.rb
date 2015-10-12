@@ -13,7 +13,7 @@ class FrontPageController < ApplicationController
       .order(created_at: :desc)
       .take(15)
 
-    get_upvoted_downvoted(current_user, @posts) if current_user
+    get_upvoted_downvoted(current_user, @posts)
 
     @channels = Channel
       .order(created_at: :desc)

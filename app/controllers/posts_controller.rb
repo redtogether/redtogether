@@ -1,9 +1,15 @@
 class PostsController < ApplicationController
+  include PostHelper
+  include VoteableHelper
+
   def show
     @post = Post.find_by_param(params[:id])
     @channel = @post.channel
     @reply = Comment.new(post: @post)
     @comments = @post.top_level_comments.order(created_at: :desc)
+
+    get_upvoted_downvoted(current_user, @post)
+    get_upvoted_downvoted(current_user, @comments)
   end
 
   def new
@@ -29,44 +35,43 @@ class PostsController < ApplicationController
   end
 
   def upvote
-    @post = Post.find_by_param(params[:post_id])
-
-    if current_user
-      current_user.upvote(@post)
-    else
-      flash[:alert] = "Must be signed in to vote"
-    end
-
-    redirect_to :back
+    vote :upvote
   end
 
   def downvote
-    @post = Post.find_by_param(params[:post_id])
-
-    if current_user
-      current_user.downvote(@post)
-    else
-      flash[:alert] = "Must be signed in to vote"
-    end
-
-    redirect_to :back
+    vote :downvote
   end
 
   def unvote
-    @post = Post.find_by_param(params[:post_id])
-
-    if current_user
-      current_user.unvote(@post)
-    else
-      flash[:alert] = "Must be signed in to vote"
-    end
-
-    redirect_to :back
+    vote :unvote
   end
 
 protected
 
+  def vote(action)
+    @post = Post.find_by_param(params[:post_id])
+
+    if current_user
+      current_user.send(action, @post)
+    else
+      flash[:alert] = "Must be signed in to vote"
+    end
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render json: { links: post_links(@post) } }
+    end
+  end
+
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def post_links(post)
+    {
+      upvote: url_for(post_upvote_path(@post)),
+      downvote: url_for(post_downvote_path(@post)),
+      unvote: url_for(post_unvote_path(@post))
+    }
   end
 end
