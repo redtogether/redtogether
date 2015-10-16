@@ -10,7 +10,8 @@ class FrontPageController < ApplicationController
 
     @posts = @posts
       .includes(:channel, :poster)
-      .order(created_at: :desc)
+      .with_frontpage_score
+      .order("frontpage_score DESC")
       .take(15)
 
     get_upvoted_downvoted(current_user, @posts)

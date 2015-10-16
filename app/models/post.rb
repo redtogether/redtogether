@@ -43,4 +43,15 @@ class Post < ActiveRecord::Base
   def top_level_comments
     comments.top_level
   end
+
+  FRONTPAGE_SQL = <<-EOF.tr("\n", "").freeze
+    (upvotes_count - downvotes_count - 1) /
+    ((EXTRACT(EPOCH FROM NOW() - created_at) / 3600) + 2) ^ %f
+    AS frontpage_score
+  EOF
+
+  scope :with_frontpage_score, -> {
+    all.select(ActiveRecord::Base.send(:sanitize_sql_array,
+      [FRONTPAGE_SQL, Rails.configuration.x.gravity]), "*")
+  }
 end
