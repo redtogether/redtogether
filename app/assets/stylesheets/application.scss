@@ -38,3 +38,33 @@ h2.subtitle::before {
 	margin: 0 0.5em;
 	color: #aaa;
 }
+
+
+article.post {
+	p {
+		margin: 0;
+	}
+
+	p.details {
+		font-size: 80%;
+		color: #333;
+	}
+
+	margin: 2em 0;
+
+	display: flex;
+
+	aside {
+		margin-right: 1em;
+		text-align: center;
+
+		.vote-button {
+			background: url(/images/vote-top-active.png);
+			width: 24px;
+			height: 24px;
+			color: transparent;
+			padding: 0;
+			border: 0;
+		}
+	}
+}

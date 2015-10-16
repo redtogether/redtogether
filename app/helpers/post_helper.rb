@@ -3,7 +3,7 @@ module PostHelper
     button_to raw("&uparrow;"),
       post_upvote_path(post),
       method: :put,
-      class: "vote-button upvote",
+      class: "vote-button upvote top",
       rel: "upvote",
       "data-post-id" => post.slug
   end
@@ -12,16 +12,16 @@ module PostHelper
     button_to raw("&downarrow;"),
       post_downvote_path(post),
       method: :put,
-      class: "vote-button downvote",
+      class: "vote-button downvote bottom",
       rel: "downvote",
       "data-post-id" => post.slug
   end
 
-  def post_unvote_button(post)
+  def post_unvote_button(post, direction)
     button_to raw("&cir;"),
       post_unvote_path(post),
       method: :put,
-      class: "vote-button unvote",
+      class: "vote-button unvote #{direction}",
       rel: "unvote",
       "data-post-id" => post.slug
   end

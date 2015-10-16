@@ -1,12 +1,15 @@
 <article class="post">
-  <p>
-   <%= post.upvoted ? post_unvote_button(post) : post_upvote_button(post) %>
-   <%= post.downvoted ? post_unvote_button(post) : post_downvote_button(post) %>
-  </p>
+  <aside class="voting">
+     <%= post.upvoted ? post_unvote_button(post, "top") : post_upvote_button(post) %>
 
-  <p class="score">
-    <%= post.score %>
-  </p>
+     <p class="score">
+      <%= post.score %>
+     </p>
+
+     <%= post.downvoted ? post_unvote_button(post, "bottom") : post_downvote_button(post) %>
+  </aside>
+
+  <section>
 
   <p>
     <%= link_to post.title, post.body %>
@@ -32,4 +35,7 @@
   <p class="details">
     <%= link_to "#{post.comments_count} comments", post %>
   </p>
+
+  </section>
+
 </article>
