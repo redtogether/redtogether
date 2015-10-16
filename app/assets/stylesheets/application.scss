@@ -59,12 +59,27 @@ article.post {
 		text-align: center;
 
 		.vote-button {
-			background: url(/images/vote-top-active.png);
 			width: 24px;
 			height: 24px;
 			color: transparent;
 			padding: 0;
 			border: 0;
+
+			&.top {
+				background: url(/images/vote-top-inactive.png);
+
+				&.unvote {
+					background: url(/images/vote-top-active.png);
+				}
+			}
+
+			&.bottom {
+				background: url(/images/vote-bottom-inactive.png);
+
+				&.unvote {
+					background: url(/images/vote-bottom-active.png);
+				}
+			}
 		}
 	}
 }

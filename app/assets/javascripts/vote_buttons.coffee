@@ -57,16 +57,22 @@ makeButtonUnvote = ($button, links) ->
   $button.attr "value", "○"
   $button.attr "rel", "unvote"
   $button.closest("form").attr "action", links.unvote
+  $button.removeClass "upvote downvote"
+  $button.addClass "unvote"
 
 makeButtonDownvote = ($button, links) ->
   $button.attr "value", "↓"
   $button.attr "rel", "downvote"
   $button.closest("form").attr "action", links.downvote
+  $button.removeClass "upvote unvote"
+  $button.addClass "downvote"
 
 makeButtonUpvote = ($button, links) ->
   $button.attr "value", "↑"
   $button.attr "rel", "upvote"
   $button.closest("form").attr "action", links.upvote
+  $button.removeClass "unvote downvote"
+  $button.addClass "upvote"
 
 $(document).ready(ready)
 $(document).on("page:load", ready)
